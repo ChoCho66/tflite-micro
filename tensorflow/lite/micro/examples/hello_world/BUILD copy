@@ -8,43 +8,28 @@ load(
     "tflm_cc_test",
 )
 
-load("//tensorflow/lite/micro/examples/hello_world:BUILD_model_config.bzl", "get_model_info")
-
 package(
     # Disabling layering_check because of http://b/177257332
     features = ["-layering_check"],
     licenses = ["notice"],
 )
 
-model_info = get_model_info()
-
 tflm_cc_library(
     name = "model",
-    srcs = model_info["srcs"],
-    hdrs = model_info["hdrs"],
-)
-
-tflm_cc_test(
-    name = "hello_world_test_float",
     srcs = [
-        model_info["test_file_float"]
+        "//tensorflow/lite/micro/examples/hello_world/models:generated_hello_world_float_model_cc",
+        "//tensorflow/lite/micro/examples/hello_world/models:generated_hello_world_int8_model_cc",
     ],
-    deps = [
-        ":model",
-        "//tensorflow/lite/micro:micro_framework",
-        "//tensorflow/lite/micro:micro_log",
-        "//tensorflow/lite/micro:micro_profiler",
-        "//tensorflow/lite/micro:op_resolvers",
-        "//tensorflow/lite/micro:recording_allocators",
-        "//tensorflow/lite/micro/testing:micro_test",
-        "//tensorflow/lite/schema:schema_fbs",
+    hdrs = [
+        "//tensorflow/lite/micro/examples/hello_world/models:generated_hello_world_float_model_hdr",
+        "//tensorflow/lite/micro/examples/hello_world/models:generated_hello_world_int8_model_hdr",
     ],
 )
 
 tflm_cc_test(
-    name = "hello_world_test_int8",
+    name = "hello_world_test",
     srcs = [
-        model_info["test_file_int8"]
+        "hello_world_test.cc",
     ],
     deps = [
         ":model",
@@ -61,7 +46,7 @@ tflm_cc_test(
 py_binary(
     name = "evaluate",
     srcs = ["evaluate.py"],
-    data = [model_info["tflite_files"][0]],  # float
+    data = ["//tensorflow/lite/micro/examples/hello_world/models:hello_world_float.tflite"],
     deps = [
         "@absl_py//absl:app",
         "@absl_py//absl/flags",
@@ -75,7 +60,10 @@ py_binary(
 py_binary(
     name = "evaluate_test",
     srcs = ["evaluate_test.py"],
-    data = model_info["tflite_files"],
+    data = [
+        "//tensorflow/lite/micro/examples/hello_world/models:hello_world_float.tflite",
+        "//tensorflow/lite/micro/examples/hello_world/models:hello_world_int8.tflite",
+    ],
     deps = [
         ":evaluate",
     ],
