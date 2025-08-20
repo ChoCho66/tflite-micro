@@ -1,5 +1,3 @@
-#include "tensorflow/lite/micro/examples/hello_world/models/stuff_toy_float_model_data.h"
-
 // /*
 //  * Copyright (C) 2024 UpbeatTech Inc. All Rights Reserved
 //  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +18,7 @@
 // #include "LiteRT_test.h"
 #include <stdio.h>
 #include <string.h>
-
+#include "tensorflow/lite/micro/examples/hello_world/models/stuff_toy_float_model_data.h"
 #include "tensorflow/lite/core/c/common.h"
 #include "tensorflow/lite/micro/micro_interpreter.h"
 #include "tensorflow/lite/micro/micro_mutable_op_resolver.h"

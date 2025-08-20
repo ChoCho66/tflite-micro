@@ -210,46 +210,46 @@ TfLiteStatus TestKnownValues() {
     }
 }
 
-// Additional function to test quantization accuracy for two-input function
-void TestQuantizationAccuracy() {
-    printf("\n=== Testing Quantization Accuracy for Two-Input Function ===\n");
+// // Additional function to test quantization accuracy for two-input function
+// void TestQuantizationAccuracy() {
+//     printf("\n=== Testing Quantization Accuracy for Two-Input Function ===\n");
     
-    // Test some sample (x, y) pairs to see quantization effects
-    struct TestPair {
-        float x;
-        float y;
-    };
+//     // Test some sample (x, y) pairs to see quantization effects
+//     struct TestPair {
+//         float x;
+//         float y;
+//     };
     
-    TestPair test_pairs[] = {
-        {-2.0f, -1.0f}, {0.0f, 0.0f}, {1.0f, 2.0f}, 
-        {0.5f, -0.5f}, {-1.5f, 1.5f}, {2.0f, -2.0f}
-    };
+//     TestPair test_pairs[] = {
+//         {-2.0f, -1.0f}, {0.0f, 0.0f}, {1.0f, 2.0f}, 
+//         {0.5f, -0.5f}, {-1.5f, 1.5f}, {2.0f, -2.0f}
+//     };
     
-    int num_pairs = sizeof(test_pairs) / sizeof(test_pairs[0]);
+//     int num_pairs = sizeof(test_pairs) / sizeof(test_pairs[0]);
     
-    // Assume typical quantization parameters (you should get these from actual model)
-    float scale = 0.02f;  // Example scale
-    int zero_point = 0;   // Example zero point
+//     // Assume typical quantization parameters (you should get these from actual model)
+//     float scale = 0.02f;  // Example scale
+//     int zero_point = 0;   // Example zero point
     
-    printf("Testing with scale: %f, zero_point: %d\n", scale, zero_point);
+//     printf("Testing with scale: %f, zero_point: %d\n", scale, zero_point);
     
-    for (int i = 0; i < num_pairs; i++) {
-        float orig_x = test_pairs[i].x;
-        float orig_y = test_pairs[i].y;
+//     for (int i = 0; i < num_pairs; i++) {
+//         float orig_x = test_pairs[i].x;
+//         float orig_y = test_pairs[i].y;
         
-        int8_t quant_x = FloatToQuantized(orig_x, scale, zero_point);
-        int8_t quant_y = FloatToQuantized(orig_y, scale, zero_point);
+//         int8_t quant_x = FloatToQuantized(orig_x, scale, zero_point);
+//         int8_t quant_y = FloatToQuantized(orig_y, scale, zero_point);
         
-        float dequant_x = QuantizedToFloat(quant_x, scale, zero_point);
-        float dequant_y = QuantizedToFloat(quant_y, scale, zero_point);
+//         float dequant_x = QuantizedToFloat(quant_x, scale, zero_point);
+//         float dequant_y = QuantizedToFloat(quant_y, scale, zero_point);
         
-        float error_x = abs_diff(orig_x, dequant_x);
-        float error_y = abs_diff(orig_y, dequant_y);
+//         float error_x = abs_diff(orig_x, dequant_x);
+//         float error_y = abs_diff(orig_y, dequant_y);
         
-        printf("Original: (%6.3f, %6.3f) -> Quantized: (%4d, %4d) -> Dequantized: (%6.3f, %6.3f) (Errors: %6.3f, %6.3f)\n",
-               orig_x, orig_y, quant_x, quant_y, dequant_x, dequant_y, error_x, error_y);
-    }
-}
+//         printf("Original: (%6.3f, %6.3f) -> Quantized: (%4d, %4d) -> Dequantized: (%6.3f, %6.3f) (Errors: %6.3f, %6.3f)\n",
+//                orig_x, orig_y, quant_x, quant_y, dequant_x, dequant_y, error_x, error_y);
+//     }
+// }
 
 int main() {
     TestKnownValues();

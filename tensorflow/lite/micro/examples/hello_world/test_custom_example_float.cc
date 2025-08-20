@@ -15,10 +15,10 @@
  * SPDX short identifier: Apache-2.0
  * ==============================================================================*/
 
- #include <math.h>
- #include "tensorflow/lite/core/c/common.h"
+#include <math.h>
+#include "tensorflow/lite/core/c/common.h"
 #include "tensorflow/lite/micro/examples/hello_world/models/custom_example_float_model_data.h"
-// #include "tensorflow/lite/micro/micro_log.h"
+ // #include "tensorflow/lite/micro/micro_log.h"
 #include "tensorflow/lite/micro/micro_interpreter.h"
 #include "tensorflow/lite/micro/micro_mutable_op_resolver.h"
 // #include "tensorflow/lite/micro/micro_profiler.h"

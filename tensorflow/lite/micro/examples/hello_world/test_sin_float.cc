@@ -18,7 +18,6 @@
 #include <math.h>
 #include "tensorflow/lite/core/c/common.h"
 #include "tensorflow/lite/micro/examples/hello_world/models/sin_float_model_data.h"
-// #include "tensorflow/lite/micro/hello_world/models/hello_world_int8_model_data.h"
 #include "tensorflow/lite/micro/micro_interpreter.h"
 // #include "tensorflow/lite/micro/micro_log.h"
 #include "tensorflow/lite/micro/micro_mutable_op_resolver.h"

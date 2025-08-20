@@ -17,13 +17,12 @@
 
 #include <math.h>
 #include "tensorflow/lite/core/c/common.h"
-// #include "tensorflow/lite/micro/hello_world/models/hello_world_float_model_data.h"
 #include "tensorflow/lite/micro/examples/hello_world/models/sin_int8_model_data.h"
 #include "tensorflow/lite/micro/micro_interpreter.h"
-#include "tensorflow/lite/micro/micro_log.h"
+// #include "tensorflow/lite/micro/micro_log.h"
 #include "tensorflow/lite/micro/micro_mutable_op_resolver.h"
-#include "tensorflow/lite/micro/micro_profiler.h"
-#include "tensorflow/lite/micro/recording_micro_interpreter.h"
+// #include "tensorflow/lite/micro/micro_profiler.h"
+// #include "tensorflow/lite/micro/recording_micro_interpreter.h"
 #include "tensorflow/lite/micro/system_setup.h"
 #include "tensorflow/lite/schema/schema_generated.h"
  
@@ -172,30 +171,30 @@ TfLiteStatus TestKnownValues() {
     }
 }
 
-// Additional function to test quantization accuracy
-void TestQuantizationAccuracy() {
-    printf("\n=== Testing Quantization Accuracy ===\n");
+// // Additional function to test quantization accuracy
+// void TestQuantizationAccuracy() {
+//     printf("\n=== Testing Quantization Accuracy ===\n");
     
-    // Test some sample values to see quantization effects
-    float test_values[] = {-2.0f, -1.0f, 0.0f, 1.0f, 2.0f, 3.14f};
-    int num_values = sizeof(test_values) / sizeof(test_values[0]);
+//     // Test some sample values to see quantization effects
+//     float test_values[] = {-2.0f, -1.0f, 0.0f, 1.0f, 2.0f, 3.14f};
+//     int num_values = sizeof(test_values) / sizeof(test_values[0]);
     
-    // Assume typical quantization parameters (you should get these from actual model)
-    float scale = 0.02f;  // Example scale
-    int zero_point = 0;   // Example zero point
+//     // Assume typical quantization parameters (you should get these from actual model)
+//     float scale = 0.02f;  // Example scale
+//     int zero_point = 0;   // Example zero point
     
-    printf("Testing with scale: %f, zero_point: %d\n", scale, zero_point);
+//     printf("Testing with scale: %f, zero_point: %d\n", scale, zero_point);
     
-    for (int i = 0; i < num_values; i++) {
-        float original = test_values[i];
-        int8_t quantized = FloatToQuantized(original, scale, zero_point);
-        float dequantized = QuantizedToFloat(quantized, scale, zero_point);
-        float quantization_error = abs_diff(original, dequantized);
+//     for (int i = 0; i < num_values; i++) {
+//         float original = test_values[i];
+//         int8_t quantized = FloatToQuantized(original, scale, zero_point);
+//         float dequantized = QuantizedToFloat(quantized, scale, zero_point);
+//         float quantization_error = abs_diff(original, dequantized);
         
-        printf("Original: %6.3f -> Quantized: %4d -> Dequantized: %6.3f (Error: %6.3f)\n",
-               original, quantized, dequantized, quantization_error);
-    }
-}
+//         printf("Original: %6.3f -> Quantized: %4d -> Dequantized: %6.3f (Error: %6.3f)\n",
+//                original, quantized, dequantized, quantization_error);
+//     }
+// }
 
 int main() {
     TestKnownValues();
