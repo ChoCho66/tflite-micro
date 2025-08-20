@@ -27,7 +27,7 @@ tflm_cc_library(
 tflm_cc_test(
     name = "hello_world_test_float",
     srcs = [
-        model_info["test_file_float"]
+        model_info["test_file_float"],
     ],
     deps = [
         ":model",

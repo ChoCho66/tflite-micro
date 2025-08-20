@@ -1,6 +1,7 @@
-MODEL_PREFIX = "stuff_toy"
+# MODEL_PREFIX = "stuff_toy"
 # MODEL_PREFIX = "custom_example"
 # MODEL_PREFIX = "sin"
+MODEL_PREFIX = "mnist"
 
 def get_model_info(prefix = MODEL_PREFIX):
     return {
