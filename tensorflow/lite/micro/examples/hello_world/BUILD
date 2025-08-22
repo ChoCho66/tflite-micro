@@ -38,6 +38,7 @@ tflm_cc_test(
         "//tensorflow/lite/micro:recording_allocators",
         "//tensorflow/lite/micro/testing:micro_test",
         "//tensorflow/lite/schema:schema_fbs",
+        "//tensorflow/lite/micro/examples/hello_world/mnist_inputs:mnist_inputs",
     ],
 )
 
