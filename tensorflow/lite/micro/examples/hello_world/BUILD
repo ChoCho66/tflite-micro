@@ -63,9 +63,7 @@ py_binary(
     srcs = ["evaluate.py"],
     data = [model_info["tflite_files"][0]],  # float
     deps = [
-        "@absl_py//absl:app",
-        "@absl_py//absl/flags",
-        "@absl_py//absl/logging",
+        requirement("absl_py"),
         requirement("numpy"),
         requirement("tensorflow"),
         "//python/tflite_micro:runtime",
